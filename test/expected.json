@@ -1,0 +1,83 @@
+{
+  "type": "Block",
+  "nodes": [
+    {
+      "type": "Extends",
+      "path": "bar.jade",
+      "filename": "/Users/forbeslindesay/GitHub/jade-load/test/foo.jade",
+      "line": 1,
+      "fullPath": "/Users/forbeslindesay/GitHub/jade-load/test/bar.jade",
+      "str": "block bing\n",
+      "ast": {
+        "type": "Block",
+        "nodes": [
+          {
+            "type": "NamedBlock",
+            "nodes": [],
+            "name": "bing",
+            "mode": "replace",
+            "line": 1,
+            "filename": "/Users/forbeslindesay/GitHub/jade-load/test/bar.jade"
+          }
+        ],
+        "line": 0,
+        "filename": "/Users/forbeslindesay/GitHub/jade-load/test/bar.jade"
+      }
+    },
+    {
+      "type": "NamedBlock",
+      "nodes": [
+        {
+          "type": "Include",
+          "path": "bing.jade",
+          "attrs": [],
+          "block": {
+            "type": "Block",
+            "nodes": []
+          },
+          "filename": "/Users/forbeslindesay/GitHub/jade-load/test/foo.jade",
+          "fullPath": "/Users/forbeslindesay/GitHub/jade-load/test/bing.jade",
+          "str": ".bing bong\n",
+          "ast": {
+            "type": "Block",
+            "nodes": [
+              {
+                "type": "Tag",
+                "name": "div",
+                "block": {
+                  "type": "Block",
+                  "nodes": [
+                    {
+                      "type": "Text",
+                      "val": "bong"
+                    }
+                  ]
+                },
+                "attrs": [
+                  {
+                    "name": "class",
+                    "val": "'bing'",
+                    "escaped": false
+                  }
+                ],
+                "attributeBlocks": [],
+                "isInline": false,
+                "line": 1,
+                "filename": "/Users/forbeslindesay/GitHub/jade-load/test/bing.jade"
+              }
+            ],
+            "line": 0,
+            "filename": "/Users/forbeslindesay/GitHub/jade-load/test/bing.jade"
+          },
+          "raw": false
+        }
+      ],
+      "line": 3,
+      "filename": "/Users/forbeslindesay/GitHub/jade-load/test/foo.jade",
+      "name": "bing",
+      "mode": "replace"
+    }
+  ],
+  "line": 0,
+  "filename": "/Users/forbeslindesay/GitHub/jade-load/test/foo.jade"
+}
