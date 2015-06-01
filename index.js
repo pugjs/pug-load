@@ -16,9 +16,15 @@ function load(ast, options) {
         if (file.type !== 'FileReference') {
           throw new Error('Expected file.type to be "FileReference"');
         }
-        var path = load.resolve(file.path, file.filename, options);
-        file.fullPath = path;
-        var str = load.read(path, options);
+        var path, str;
+        try {
+          path = load.resolve(file.path, file.filename, options);
+          file.fullPath = path;
+          str = load.read(path, options);
+        } catch (ex) {
+          ex.message += '\n    at ' + node.filename + ' line ' + node.line;
+          throw ex;
+        }
         file.str = str;
         if (node.type === 'Extends' || (!node.filter && /\.jade$/.test(path))) {
           file.ast = load.string(str, path, options);
