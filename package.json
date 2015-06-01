@@ -4,11 +4,11 @@
   "description": "The jade loader is responsible for loading the depenendencies of a given jade file.",
   "keywords": [],
   "dependencies": {
-    "jade-walk": "0.0.1"
+    "jade-walk": "0.0.2"
   },
   "devDependencies": {
-    "jade-lexer": "0.0.3",
-    "jade-parser": "0.0.2"
+    "jade-lexer": "0.0.5",
+    "jade-parser": "0.0.7"
   },
   "scripts": {
     "test": "node test"

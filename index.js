@@ -11,26 +11,17 @@ function load(ast, options) {
   ast = JSON.parse(JSON.stringify(ast));
   return walk(ast, function (node) {
     if (node.str === undefined) {
-      if (node.type === 'Extends') {
-        var path = load.resolve(node.path, node.filename, options);
-        if (!/\.jade$/.test(path)) {
-          path += '.jade';
+      if (node.type === 'Include' || node.type === 'Extends') {
+        var file = node.file;
+        if (file.type !== 'FileReference') {
+          throw new Error('Expected file.type to be "FileReference"');
         }
-        node.fullPath = path;
+        var path = load.resolve(file.path, file.filename, options);
+        file.fullPath = path;
         var str = load.read(path, options);
-        node.str = str;
-        node.ast = load.string(str, path, options);
-      }
-      if (node.type === 'Include') {
-        var path = load.resolve(node.path, node.filename, options);
-        node.fullPath = path;
-        var str = load.read(path, options);
-        node.str = str;
-        if (!node.filter && /\.jade$/.test(path)) {
-          node.ast = load.string(str, path, options);
-          node.raw = false;
-        } else {
-          node.raw = !node.filter;
+        file.str = str;
+        if (node.type === 'Extends' || (!node.filter && /\.jade$/.test(path))) {
+          file.ast = load.string(str, path, options);
         }
       }
     }
