@@ -1,6 +1,6 @@
 {
   "name": "jade-load",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The jade loader is responsible for loading the depenendencies of a given jade file.",
   "keywords": [],
   "dependencies": {
