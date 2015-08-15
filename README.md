@@ -26,31 +26,31 @@ Loads all dependencies of the Jade AST. `load.string` and `load.file` are syntac
 
 - `lex` (function): **(required)** the lexer used
 - `parse` (function): **(required)** the parser used
-- `resolve` (function): a function used to override `load.resolve`. Defaults to undefined, i.e. `load.resolve` is used.
-- `read` (function): a function used to override `load.resolve`. Defaults to undefined, i.e. `load.read` is used.
+- `resolve` (function): a function used to override `load.resolve`. Defaults to `load.resolve`.
+- `read` (function): a function used to override `load.read`. Defaults to `load.read`.
 - `basedir` (string): the base directory of absolute inclusion. This is **required** when absolute inclusion (file name starts with `'/'`) is used. Defaults to undefined.
 
-The `options` object is passed to `load.resolve` and `load.read`.
+The `options` object is passed to `load.resolve` and `load.read`, or equivalently `options.resolve` and `options.read`.
 
 ### `load.resolve(filename, source, options)`
 
-Callback used by `jade-load` to resolve the full path of an included or extended file given the path of the source file. If `options` contain a `resolve` property, then that function is called and its results returned.
-
-This function is not meant to be called from outside of `jade-load`, but rather for you to override.
+Callback used by `jade-load` to resolve the full path of an included or extended file given the path of the source file.
 
 `filename` is the included file. `source` is the name of the parent file that includes `filename`.
 
+This function is not meant to be called from outside of `jade-load`, but rather for you to override.
+
 ### `load.read(filename, options)`
 
-Callback used by `jade-load` to return the contents of a file. If `options` contain a `read` property, then that function is called and its results returned instead of this function.
-
-This function is not meant to be called from outside of `jade-load`, but rather for you to override.
+Callback used by `jade-load` to return the contents of a file.
 
 `filename` is the file to read.
 
+This function is not meant to be called from outside of `jade-load`, but rather for you to override.
+
 ### `load.validateOptions(options)`
 
-Callback used `jade-load` to ensure the options object is valid. If your overriden `load.resolve` or `load.read` use a different `options` schema, you will need to override this function as well.
+Callback used `jade-load` to ensure the options object is valid. If your overriden `load.resolve` or `load.read` uses a different `options` scheme, you will need to override this function as well.
 
 This function is not meant to be called from outside of `jade-load`, but rather for you to override.
 

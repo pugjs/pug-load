@@ -18,9 +18,9 @@ function load(ast, options) {
         }
         var path, str;
         try {
-          path = load.resolve(file.path, file.filename, options);
+          path = (options.resolve || load.resolve)(file.path, file.filename, options);
           file.fullPath = path;
-          str = load.read(path, options);
+          str = (options.read || load.read)(path, options);
         } catch (ex) {
           ex.message += '\n    at ' + node.filename + ' line ' + node.line;
           throw ex;
@@ -42,12 +42,11 @@ load.string = function loadString(str, filename, options) {
 };
 load.file = function loadFile(filename, options) {
   load.validateOptions(options);
-  var str = load.read(filename, options);
+  var str = (options.read || load.read)(filename, options);
   return load.string(str, filename, options);
 }
 
 load.resolve = function resolve(filename, source, options) {
-  if (options && options.resolve) return options.resolve(filename, source, options);
   filename = filename.trim();
   source = source.trim();
   if (filename[0] !== '/' && !source)
@@ -63,11 +62,13 @@ load.resolve = function resolve(filename, source, options) {
   return filename;
 };
 load.read = function read(filename, options) {
-  if (options && options.read) return options.read(filename, options);
   return fs.readFileSync(filename, 'utf8');
 };
 
 load.validateOptions = function validateOptions(options) {
+  if (typeof options !== 'object') {
+    throw new TypeError('options must be an object');
+  }
   if (typeof options.lex !== 'function') {
     throw new TypeError('options.lex must be a function');
   }
