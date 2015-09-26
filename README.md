@@ -17,8 +17,8 @@ var load = require('jade-load');
 ```
 
 ### `load(ast, options)`
-### `load.string(str, options)`
-### `load.file(file, options)`
+### `load.string(str, filename, options)`
+### `load.file(filename, options)`
 
 Loads all dependencies of the Jade AST. `load.string` and `load.file` are syntactic sugar that parses the string or file instead of you doing it yourself.
 
