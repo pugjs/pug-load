@@ -11,7 +11,7 @@ function load(ast, options) {
   ast = JSON.parse(JSON.stringify(ast));
   return walk(ast, function (node) {
     if (node.str === undefined) {
-      if (node.type === 'Include' || node.type === 'Extends') {
+      if (node.type === 'Include' || node.type === 'RawInclude' || node.type === 'Extends') {
         var file = node.file;
         if (file.type !== 'FileReference') {
           throw new Error('Expected file.type to be "FileReference"');
@@ -26,7 +26,7 @@ function load(ast, options) {
           throw ex;
         }
         file.str = str;
-        if (node.type === 'Extends' || (!node.filter && /\.jade$/.test(path))) {
+        if (node.type === 'Extends' || node.type === 'Include') {
           file.ast = load.string(str, path, options);
         }
       }
@@ -56,8 +56,6 @@ load.resolve = function resolve(filename, source, options) {
     throw new Error('the "basedir" option is required to use includes and extends with "absolute" paths');
 
   filename = path.join(filename[0] === '/' ? options.basedir : path.dirname(source), filename);
-
-  if (path.basename(filename).indexOf('.') === -1) filename += '.jade';
 
   return filename;
 };
