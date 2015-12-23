@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var walk = require('jade-walk');
+var walk = require('pug-walk');
 
 module.exports = load;
 function load(ast, options) {

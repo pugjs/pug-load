@@ -3,12 +3,12 @@
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
-var walk = require('jade-walk');
-var lex = require('jade-lexer');
-var parse = require('jade-parser');
+var walk = require('pug-walk');
+var lex = require('pug-lexer');
+var parse = require('pug-parser');
 var load = require('../');
 
-var filename = __dirname + '/foo.jade';
+var filename = __dirname + '/foo.pug';
 var ast = load.file(filename, {
   lex: lex,
   parse: parse
