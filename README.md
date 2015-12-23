@@ -1,14 +1,14 @@
-# jade-load
+# pug-loader
 
-The jade loader is responsible for loading the depenendencies of a given jade file.  It adds `fullPath` and `str` properties to every `Include` and `Extends` node.  It also adds an `ast` property to any `Include` nodes that are loading jade and any `Extends` nodes.  It then recursively loads the dependencies of any of those included files.
+The pug loader is responsible for loading the depenendencies of a given pug file.  It adds `fullPath` and `str` properties to every `Include` and `Extends` node.  It also adds an `ast` property to any `Include` nodes that are loading pug and any `Extends` nodes.  It then recursively loads the dependencies of any of those included files.
 
-[![Build Status](https://img.shields.io/travis/jadejs/jade-load/master.svg)](https://travis-ci.org/jadejs/jade-load)
-[![Dependency Status](https://img.shields.io/gemnasium/jadejs/jade-load.svg)](https://gemnasium.com/jadejs/jade-load)
-[![NPM version](https://img.shields.io/npm/v/jade-load.svg)](https://www.npmjs.org/package/jade-load)
+[![Build Status](https://img.shields.io/travis/pugjs/pug-loader/master.svg)](https://travis-ci.org/pugjs/pug-loader)
+[![Dependency Status](https://img.shields.io/gemnasium/pugjs/pug-loader.svg)](https://gemnasium.com/pugjs/pug-loader)
+[![NPM version](https://img.shields.io/npm/v/pug-loader.svg)](https://www.npmjs.org/package/pug-loader)
 
 ## Installation
 
-    npm install jade-load
+    npm install pug-loader
 
 ## Usage
 
@@ -58,14 +58,14 @@ This function is not meant to be called from outside of `jade-load`, but rather 
 
 ```js
 var fs = require('fs');
-var lex = require('jade-lexer');
-var parse = require('jade-parser');
-var load = require('jade-load');
+var lex = require('pug-lexer');
+var parse = require('pug-parser');
+var load = require('pug-loader');
 
 // you can do everything very manually
 
-var str = fs.readFileSync('bar.jade', 'utf8');
-var ast = load(parse(lex(str, 'bar.jade'), 'bar.jade'), {
+var str = fs.readFileSync('bar.pug', 'utf8');
+var ast = load(parse(lex(str, 'bar.pug'), 'bar.pug'), {
   lex: lex,
   parse: parse,
   resolve: function (filename, source, options) {
@@ -76,8 +76,8 @@ var ast = load(parse(lex(str, 'bar.jade'), 'bar.jade'), {
 
 // or you can do all that in just two steps
 
-var str = fs.readFileSync('bar.jade', 'utf8');
-var ast = load.string(str, 'bar.jade', {
+var str = fs.readFileSync('bar.pug', 'utf8');
+var ast = load.string(str, 'bar.pug', {
   lex: lex,
   parse: parse,
   resolve: function (filename, source, options) {
@@ -88,7 +88,7 @@ var ast = load.string(str, 'bar.jade', {
 
 // or you can do all that in only one step
 
-var ast = load.file('bar.jade', {
+var ast = load.file('bar.pug', {
   lex: lex,
   parse: parse,
   resolve: function (filename, source, options) {

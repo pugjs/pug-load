@@ -5,10 +5,10 @@
       "type": "Extends",
       "file": {
         "type": "FileReference",
-        "path": "bar.jade",
+        "path": "bar.pug",
         "line": 1,
-        "filename": "<dirname>/foo.jade",
-        "fullPath": "<dirname>/bar.jade",
+        "filename": "<dirname>/foo.pug",
+        "fullPath": "<dirname>/bar.pug",
         "str": "block bing\n",
         "ast": {
           "type": "Block",
@@ -17,17 +17,17 @@
               "type": "NamedBlock",
               "nodes": [],
               "line": 1,
-              "filename": "<dirname>/bar.jade",
+              "filename": "<dirname>/bar.pug",
               "name": "bing",
               "mode": "replace"
             }
           ],
           "line": 0,
-          "filename": "<dirname>/bar.jade"
+          "filename": "<dirname>/bar.pug"
         }
       },
       "line": 1,
-      "filename": "<dirname>/foo.jade"
+      "filename": "<dirname>/foo.pug"
     },
     {
       "type": "NamedBlock",
@@ -37,9 +37,9 @@
           "file": {
             "type": "FileReference",
             "line": 4,
-            "filename": "<dirname>/foo.jade",
-            "path": "bing.jade",
-            "fullPath": "<dirname>/bing.jade",
+            "filename": "<dirname>/foo.pug",
+            "path": "bing.pug",
+            "fullPath": "<dirname>/bing.pug",
             "str": ".bing bong\n",
             "ast": {
               "type": "Block",
@@ -55,11 +55,11 @@
                         "type": "Text",
                         "val": "bong",
                         "line": 1,
-                        "filename": "<dirname>/bing.jade"
+                        "filename": "<dirname>/bing.pug"
                       }
                     ],
                     "line": 1,
-                    "filename": "<dirname>/bing.jade"
+                    "filename": "<dirname>/bing.pug"
                   },
                   "attrs": [
                     {
@@ -71,29 +71,29 @@
                   "attributeBlocks": [],
                   "isInline": false,
                   "line": 1,
-                  "filename": "<dirname>/bing.jade"
+                  "filename": "<dirname>/bing.pug"
                 }
               ],
               "line": 0,
-              "filename": "<dirname>/bing.jade"
+              "filename": "<dirname>/bing.pug"
             }
           },
           "line": 4,
-          "filename": "<dirname>/foo.jade",
+          "filename": "<dirname>/foo.pug",
           "block": {
             "type": "Block",
             "nodes": [],
             "line": 4,
-            "filename": "<dirname>/foo.jade"
+            "filename": "<dirname>/foo.pug"
           }
         }
       ],
       "line": 3,
-      "filename": "<dirname>/foo.jade",
+      "filename": "<dirname>/foo.pug",
       "name": "bing",
       "mode": "replace"
     }
   ],
   "line": 0,
-  "filename": "<dirname>/foo.jade"
+  "filename": "<dirname>/foo.pug"
 }
