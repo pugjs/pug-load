@@ -13,14 +13,14 @@ The pug loader is responsible for loading the depenendencies of a given pug file
 ## Usage
 
 ```js
-var load = require('jade-load');
+var load = require('pug-load');
 ```
 
 ### `load(ast, options)`
 ### `load.string(str, filename, options)`
 ### `load.file(filename, options)`
 
-Loads all dependencies of the Jade AST. `load.string` and `load.file` are syntactic sugar that parses the string or file instead of you doing it yourself.
+Loads all dependencies of the Pug AST. `load.string` and `load.file` are syntactic sugar that parses the string or file instead of you doing it yourself.
 
 `options` may contain the following properties:
 
@@ -34,25 +34,25 @@ The `options` object is passed to `load.resolve` and `load.read`, or equivalentl
 
 ### `load.resolve(filename, source, options)`
 
-Callback used by `jade-load` to resolve the full path of an included or extended file given the path of the source file.
+Callback used by `pug-load` to resolve the full path of an included or extended file given the path of the source file.
 
 `filename` is the included file. `source` is the name of the parent file that includes `filename`.
 
-This function is not meant to be called from outside of `jade-load`, but rather for you to override.
+This function is not meant to be called from outside of `pug-load`, but rather for you to override.
 
 ### `load.read(filename, options)`
 
-Callback used by `jade-load` to return the contents of a file.
+Callback used by `pug-load` to return the contents of a file.
 
 `filename` is the file to read.
 
-This function is not meant to be called from outside of `jade-load`, but rather for you to override.
+This function is not meant to be called from outside of `pug-load`, but rather for you to override.
 
 ### `load.validateOptions(options)`
 
-Callback used `jade-load` to ensure the options object is valid. If your overriden `load.resolve` or `load.read` uses a different `options` scheme, you will need to override this function as well.
+Callback used `pug-load` to ensure the options object is valid. If your overriden `load.resolve` or `load.read` uses a different `options` scheme, you will need to override this function as well.
 
-This function is not meant to be called from outside of `jade-load`, but rather for you to override.
+This function is not meant to be called from outside of `pug-load`, but rather for you to override.
 
 ### Example
 
