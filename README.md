@@ -69,7 +69,7 @@ var ast = load(parse(lex(str, 'bar.pug'), 'bar.pug'), {
   lex: lex,
   parse: parse,
   resolve: function (filename, source, options) {
-    console.log('"' + filename + '" file requested from "' + source '".');
+    console.log('"' + filename + '" file requested from "' + source + '".');
     return load.resolve(filename, source, options);
   }
 });
@@ -81,7 +81,7 @@ var ast = load.string(str, 'bar.pug', {
   lex: lex,
   parse: parse,
   resolve: function (filename, source, options) {
-    console.log('"' + filename + '" file requested from "' + source '".');
+    console.log('"' + filename + '" file requested from "' + source + '".');
     return load.resolve(filename, source, options);
   }
 });
@@ -92,7 +92,7 @@ var ast = load.file('bar.pug', {
   lex: lex,
   parse: parse,
   resolve: function (filename, source, options) {
-    console.log('"' + filename + '" file requested from "' + source '".');
+    console.log('"' + filename + '" file requested from "' + source + '".');
     return load.resolve(filename, source, options);
   }
 });
