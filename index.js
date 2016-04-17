@@ -48,14 +48,13 @@ load.file = function loadFile(filename, options) {
 
 load.resolve = function resolve(filename, source, options) {
   filename = filename.trim();
-  source = source.trim();
   if (filename[0] !== '/' && !source)
     throw new Error('the "filename" option is required to use includes and extends with "relative" paths');
 
   if (filename[0] === '/' && !options.basedir)
     throw new Error('the "basedir" option is required to use includes and extends with "absolute" paths');
 
-  filename = path.join(filename[0] === '/' ? options.basedir : path.dirname(source), filename);
+  filename = path.join(filename[0] === '/' ? options.basedir : path.dirname(source.trim()), filename);
 
   return filename;
 };
