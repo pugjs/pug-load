@@ -1,14 +1,14 @@
-# pug-loader
+# pug-load
 
 The pug loader is responsible for loading the depenendencies of a given pug file.  It adds `fullPath` and `str` properties to every `Include` and `Extends` node.  It also adds an `ast` property to any `Include` nodes that are loading pug and any `Extends` nodes.  It then recursively loads the dependencies of any of those included files.
 
-[![Build Status](https://img.shields.io/travis/pugjs/pug-loader/master.svg)](https://travis-ci.org/pugjs/pug-loader)
-[![Dependency Status](https://img.shields.io/david/pugjs/pug-loader.svg)](https://david-dm.org/pugjs/pug-loader)
-[![NPM version](https://img.shields.io/npm/v/pug-loader.svg)](https://www.npmjs.org/package/pug-loader)
+[![Build Status](https://img.shields.io/travis/pugjs/pug-load/master.svg)](https://travis-ci.org/pugjs/pug-load)
+[![Dependency Status](https://img.shields.io/david/pugjs/pug-load.svg)](https://david-dm.org/pugjs/pug-load)
+[![NPM version](https://img.shields.io/npm/v/pug-load.svg)](https://www.npmjs.org/package/pug-load)
 
 ## Installation
 
-    npm install pug-loader
+    npm install pug-load
 
 ## Usage
 
@@ -60,7 +60,7 @@ This function is not meant to be called from outside of `pug-load`, but rather f
 var fs = require('fs');
 var lex = require('pug-lexer');
 var parse = require('pug-parser');
-var load = require('pug-loader');
+var load = require('pug-load');
 
 // you can do everything very manually
 
