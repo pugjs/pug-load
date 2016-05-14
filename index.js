@@ -27,23 +27,30 @@ function load(ast, options) {
         }
         file.str = str;
         if (node.type === 'Extends' || node.type === 'Include') {
-          file.ast = load.string(str, path, options);
+          var childOptions = {};
+          Object.keys(options).forEach(function (key) {
+            childOptions[key] = options[key];
+          })
+          childOptions.filename = path;
+          file.ast = load.string(str, childOptions);
         }
       }
     }
   });
 }
 
-load.string = function loadString(str, filename, options) {
+load.string = function loadString(src, options) {
   load.validateOptions(options);
-  var tokens = options.lex(str, filename);
-  var ast = options.parse(tokens, filename);
+  options.src = src;
+  var tokens = options.lex(src, options);
+  var ast = options.parse(tokens, options);
   return load(ast, options);
 };
 load.file = function loadFile(filename, options) {
   load.validateOptions(options);
-  var str = (options.read || load.read)(filename, options);
-  return load.string(str, filename, options);
+  options.filename = filename;
+  var str = (options.read || load.read)(filename);
+  return load.string(str, options);
 }
 
 load.resolve = function resolve(filename, source, options) {
