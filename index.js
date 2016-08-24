@@ -70,18 +70,23 @@ load.read = function read(filename, options) {
 };
 
 load.validateOptions = function validateOptions(options) {
+  /* istanbul ignore if */
   if (typeof options !== 'object') {
     throw new TypeError('options must be an object');
   }
+  /* istanbul ignore if */
   if (typeof options.lex !== 'function') {
     throw new TypeError('options.lex must be a function');
   }
+  /* istanbul ignore if */
   if (typeof options.parse !== 'function') {
     throw new TypeError('options.parse must be a function');
   }
+  /* istanbul ignore if */
   if (options.resolve && typeof options.resolve !== 'function') {
     throw new TypeError('options.resolve must be a function');
   }
+  /* istanbul ignore if */
   if (options.read && typeof options.read !== 'function') {
     throw new TypeError('options.read must be a function');
   }
