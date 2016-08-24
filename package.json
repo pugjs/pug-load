@@ -11,10 +11,12 @@
   },
   "devDependencies": {
     "pug-lexer": "^2.0.0",
-    "pug-parser": "^2.0.0"
+    "pug-parser": "^2.0.0",
+    "istanbul": "*"
   },
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "coverage": "istanbul cover test"
   },
   "repository": {
     "type": "git",
