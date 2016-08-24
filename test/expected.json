@@ -86,6 +86,37 @@
             "line": 4,
             "filename": "<dirname>/foo.pug"
           }
+        },
+        {
+          "type": "Tag",
+          "name": "script",
+          "selfClosing": false,
+          "block": {
+            "type": "Block",
+            "nodes": [
+              {
+                "type": "RawInclude",
+                "file": {
+                  "type": "FileReference",
+                  "line": 6,
+                  "filename": "<dirname>/foo.pug",
+                  "path": "script.js",
+                  "fullPath": "<dirname>/script.js",
+                  "str": "document.write('hello world!');\n"
+                },
+                "line": 6,
+                "filename": "<dirname>/foo.pug",
+                "filters": []
+              }
+            ],
+            "line": 5,
+            "filename": "<dirname>/foo.pug"
+          },
+          "attrs": [],
+          "attributeBlocks": [],
+          "isInline": false,
+          "line": 5,
+          "filename": "<dirname>/foo.pug"
         }
       ],
       "line": 3,
