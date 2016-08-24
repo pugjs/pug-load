@@ -3,10 +3,11 @@
 var fs = require('fs');
 var path = require('path');
 var walk = require('pug-walk');
+var assign = require('object-assign');
 
 module.exports = load;
 function load(ast, options) {
-  load.validateOptions(options);
+  options = getOptions(options);
   // clone the ast
   ast = JSON.parse(JSON.stringify(ast));
   return walk(ast, function (node) {
@@ -18,21 +19,18 @@ function load(ast, options) {
         }
         var path, str;
         try {
-          path = (options.resolve || load.resolve)(file.path, file.filename, options);
+          path = options.resolve(file.path, file.filename, options);
           file.fullPath = path;
-          str = (options.read || load.read)(path, options);
+          str = options.read(path, options);
         } catch (ex) {
           ex.message += '\n    at ' + node.filename + ' line ' + node.line;
           throw ex;
         }
         file.str = str;
         if (node.type === 'Extends' || node.type === 'Include') {
-          var childOptions = {};
-          Object.keys(options).forEach(function (key) {
-            childOptions[key] = options[key];
-          })
-          childOptions.filename = path;
-          file.ast = load.string(str, childOptions);
+          file.ast = load.string(str, assign({}, options, {
+            filename: path
+          }));
         }
       }
     }
@@ -40,16 +38,18 @@ function load(ast, options) {
 }
 
 load.string = function loadString(src, options) {
-  load.validateOptions(options);
-  options.src = src;
+  options = assign({}, getOptions(options), {
+    src: src
+  });
   var tokens = options.lex(src, options);
   var ast = options.parse(tokens, options);
   return load(ast, options);
 };
 load.file = function loadFile(filename, options) {
-  load.validateOptions(options);
-  options.filename = filename;
-  var str = (options.read || load.read)(filename);
+  options = assign({}, getOptions(options), {
+    filename: filename
+  });
+  var str = options.read(filename);
   return load.string(str, options);
 }
 
@@ -86,3 +86,11 @@ load.validateOptions = function validateOptions(options) {
     throw new TypeError('options.read must be a function');
   }
 };
+
+function getOptions(options) {
+  load.validateOptions(options);
+  return assign({}, {
+    resolve: load.resolve,
+    read: load.read
+  }, options);
+}
