@@ -5,6 +5,7 @@ The pug loader is responsible for loading the depenendencies of a given pug file
 [![Build Status](https://img.shields.io/travis/pugjs/pug-load/master.svg)](https://travis-ci.org/pugjs/pug-load)
 [![Dependency Status](https://img.shields.io/david/pugjs/pug-load.svg)](https://david-dm.org/pugjs/pug-load)
 [![NPM version](https://img.shields.io/npm/v/pug-load.svg)](https://www.npmjs.org/package/pug-load)
+[![Coverage Status](https://img.shields.io/codecov/c/github/pugjs/pug-load.svg)](https://codecov.io/gh/pugjs/pug-load)
 
 ## Installation
 
