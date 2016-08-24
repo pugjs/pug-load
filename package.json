@@ -1,12 +1,12 @@
 {
   "name": "pug-load",
   "version": "2.0.0",
-  "description": "The pug loader is responsible for loading the depenendencies of a given pug file.",
+  "description": "The Pug loader is responsible for loading the depenendencies of a given Pug file.",
   "keywords": [
     "pug"
   ],
   "dependencies": {
-    "pug-walk": "0.0.3"
+    "pug-walk": "^1.0.0"
   },
   "devDependencies": {
     "pug-lexer": "^2.0.0",
