@@ -1,6 +1,6 @@
 {
   "name": "pug-load",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "The Pug loader is responsible for loading the depenendencies of a given Pug file.",
   "keywords": [
     "pug"
