@@ -38,7 +38,7 @@ function load(ast, options) {
 }
 
 load.string = function loadString(src, options) {
-  options = assign({}, getOptions(options), {
+  options = assign(getOptions(options), {
     src: src
   });
   var tokens = options.lex(src, options);
@@ -46,7 +46,7 @@ load.string = function loadString(src, options) {
   return load(ast, options);
 };
 load.file = function loadFile(filename, options) {
-  options = assign({}, getOptions(options), {
+  options = assign(getOptions(options), {
     filename: filename
   });
   var str = options.read(filename);
@@ -89,7 +89,7 @@ load.validateOptions = function validateOptions(options) {
 
 function getOptions(options) {
   load.validateOptions(options);
-  return assign({}, {
+  return assign({
     resolve: load.resolve,
     read: load.read
   }, options);
