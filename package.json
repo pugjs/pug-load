@@ -6,6 +6,7 @@
     "pug"
   ],
   "dependencies": {
+    "object-assign": "^4.1.0",
     "pug-walk": "^1.0.0"
   },
   "devDependencies": {
